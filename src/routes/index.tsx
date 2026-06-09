@@ -33,8 +33,8 @@ export const Route = createFileRoute("/")({
   component: Landing,
 });
 
-const SERVER_IP = "play.gullmc.net";
-const DISCORD_URL = "https://discord.gg/gullmc";
+const SERVER_IP = "gullmc.mcsh.io";
+const DISCORD_URL = "https://discord.gg/9SWPzwptje";
 
 const RANKS = [
   { name: "Noob", tagline: "First steps. Every legend starts here.", Icon: Sparkles, hue: "from-sky-300/40 to-cyan-500/20" },
