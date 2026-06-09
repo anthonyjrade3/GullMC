@@ -1,0 +1,119 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-cyan: var(--cyan);
+  --color-cyan-glow: var(--cyan-glow);
+  --color-deep: var(--deep);
+  --font-display: "Orbitron", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Deep navy → cyan cyberpunk palette */
+  --background: oklch(0.16 0.04 250);
+  --foreground: oklch(0.97 0.01 220);
+  --card: oklch(0.22 0.05 250 / 0.5);
+  --card-foreground: oklch(0.97 0.01 220);
+  --popover: oklch(0.18 0.04 250);
+  --popover-foreground: oklch(0.97 0.01 220);
+  --primary: oklch(0.78 0.16 220);
+  --primary-foreground: oklch(0.12 0.04 250);
+  --secondary: oklch(0.28 0.05 250);
+  --secondary-foreground: oklch(0.97 0.01 220);
+  --muted: oklch(0.24 0.04 250);
+  --muted-foreground: oklch(0.72 0.04 230);
+  --accent: oklch(0.65 0.22 250);
+  --accent-foreground: oklch(0.98 0.01 220);
+  --destructive: oklch(0.62 0.24 25);
+  --destructive-foreground: oklch(0.98 0.01 220);
+  --border: oklch(0.78 0.16 220 / 0.18);
+  --input: oklch(1 0 0 / 0.08);
+  --ring: oklch(0.78 0.16 220);
+  --cyan: oklch(0.82 0.16 215);
+  --cyan-glow: oklch(0.78 0.2 220);
+  --deep: oklch(0.10 0.04 255);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+@utility glass {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--cyan) 8%, transparent),
+    color-mix(in oklab, var(--deep) 60%, transparent)
+  );
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--cyan) 28%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--cyan) 10%, transparent) inset,
+    0 10px 40px -10px color-mix(in oklab, var(--cyan-glow) 30%, transparent);
+}
+
+@utility glow-text {
+  text-shadow: 0 0 24px color-mix(in oklab, var(--cyan-glow) 60%, transparent);
+}
+
+@utility glow-border {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--cyan) 40%, transparent),
+    0 0 30px color-mix(in oklab, var(--cyan-glow) 35%, transparent);
+}
+
+@utility grid-bg {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--cyan) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--cyan) 8%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 100%);
+}
